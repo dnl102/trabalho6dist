@@ -1,0 +1,16 @@
+{
+  "linguagem": "python",
+  "tecnologia": "grpc",
+  "carga": "escrita",
+  "vus": 50,
+  "requisicoes": 23034,
+  "requisicoes_por_s": 7632.1785294867705,
+  "latencia_media_ms": 6.458287994182553,
+  "latencia_mediana_ms": 5.1202005,
+  "latencia_p95_ms": 13.905013499999999,
+  "latencia_p99_ms": 14.369696269999999,
+  "latencia_max_ms": 15.463263,
+  "taxa_erros": 0,
+  "bytes_recebidos_por_req": 105.18520448033343,
+  "bytes_enviados_por_req": 96.7827559260224
+}

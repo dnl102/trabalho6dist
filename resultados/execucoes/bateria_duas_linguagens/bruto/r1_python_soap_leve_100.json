@@ -1,0 +1,16 @@
+{
+  "linguagem": "python",
+  "tecnologia": "soap",
+  "carga": "leve",
+  "vus": 100,
+  "requisicoes": 3719,
+  "requisicoes_por_s": 1206.0219546130452,
+  "latencia_media_ms": 81.62573162059702,
+  "latencia_mediana_ms": 80.626338,
+  "latencia_p95_ms": 94.21884,
+  "latencia_p99_ms": 140.01711180000038,
+  "latencia_max_ms": 261.494422,
+  "taxa_erros": 0,
+  "bytes_recebidos_por_req": 2138.9542887873085,
+  "bytes_enviados_por_req": 428.4638343640764
+}

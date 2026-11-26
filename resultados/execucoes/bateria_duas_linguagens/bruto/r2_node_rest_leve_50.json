@@ -1,0 +1,16 @@
+{
+  "linguagem": "node",
+  "tecnologia": "rest",
+  "carga": "leve",
+  "vus": 50,
+  "requisicoes": 94396,
+  "requisicoes_por_s": 31448.947760639156,
+  "latencia_media_ms": 1.5218711688525028,
+  "latencia_mediana_ms": 1.429774,
+  "latencia_p95_ms": 2.8889917499999997,
+  "latencia_p99_ms": 4.075423150000007,
+  "latencia_max_ms": 15.917969,
+  "taxa_erros": 0,
+  "bytes_recebidos_por_req": 864.2602228908005,
+  "bytes_enviados_por_req": 90.81866816390524
+}

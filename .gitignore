@@ -1,0 +1,33 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Node.js
+node_modules/
+
+# Ferramentas baixadas (k6 — ver README)
+ferramentas/
+
+# Material que não vai para o repositório
+slides/
+*.pdf
+*.pptx
+
+# Resultados: só o consolidado, gráficos e a bateria arquivada
+*.log
+resultados/bruto/
+resultados/backup_*/
+
+# Editor / SO
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Segredos
+.env
+.env.*

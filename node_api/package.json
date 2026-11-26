@@ -1,0 +1,14 @@
+{
+  "name": "trab6-node-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Implementação em Node.js do serviço de streaming de músicas (REST, GraphQL, gRPC e SOAP)",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.4",
+    "@grpc/proto-loader": "^0.7.15",
+    "express": "^5.1.0",
+    "graphql": "^16.10.0",
+    "graphql-http": "^1.22.4",
+    "soap": "^1.1.9"
+  }
+}

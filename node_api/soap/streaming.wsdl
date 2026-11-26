@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="StreamingMusicas"
+  targetNamespace="http://exemplo.ufc.br/streaming"
+  xmlns:tns="http://exemplo.ufc.br/streaming"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <types>
+    <xsd:schema targetNamespace="http://exemplo.ufc.br/streaming" elementFormDefault="qualified">
+
+      <xsd:complexType name="IntegerArray">
+        <xsd:sequence>
+          <xsd:element name="integer" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="Usuario">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="nome" type="xsd:string"/>
+          <xsd:element name="idade" type="xsd:int"/>
+          <xsd:element name="email" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="Musica">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="nome" type="xsd:string"/>
+          <xsd:element name="artista" type="xsd:string"/>
+          <xsd:element name="genero" type="xsd:string"/>
+          <xsd:element name="duracao_s" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="Playlist">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="nome" type="xsd:string"/>
+          <xsd:element name="descricao" type="xsd:string"/>
+          <xsd:element name="usuario_id" type="xsd:int"/>
+          <xsd:element name="musicas_ids" type="tns:IntegerArray"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="UsuarioArray">
+        <xsd:sequence>
+          <xsd:element name="Usuario" type="tns:Usuario" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="MusicaArray">
+        <xsd:sequence>
+          <xsd:element name="Musica" type="tns:Musica" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="PlaylistArray">
+        <xsd:sequence>
+          <xsd:element name="Playlist" type="tns:Playlist" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <!-- Usuários -->
+      <xsd:element name="ListarUsuarios"><xsd:complexType/></xsd:element>
+      <xsd:element name="ListarUsuariosResponse"><xsd:complexType><xsd:sequence><xsd:element name="ListarUsuariosResult" type="tns:UsuarioArray"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="ObterUsuario"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ObterUsuarioResponse"><xsd:complexType><xsd:sequence><xsd:element name="ObterUsuarioResult" type="tns:Usuario"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="CriarUsuario"><xsd:complexType><xsd:sequence><xsd:element name="nome" type="xsd:string"/><xsd:element name="idade" type="xsd:int"/><xsd:element name="email" type="xsd:string"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CriarUsuarioResponse"><xsd:complexType><xsd:sequence><xsd:element name="CriarUsuarioResult" type="tns:Usuario"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="AtualizarUsuario"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/><xsd:element name="nome" type="xsd:string"/><xsd:element name="idade" type="xsd:int"/><xsd:element name="email" type="xsd:string"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="AtualizarUsuarioResponse"><xsd:complexType><xsd:sequence><xsd:element name="AtualizarUsuarioResult" type="tns:Usuario"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="RemoverUsuario"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="RemoverUsuarioResponse"><xsd:complexType/></xsd:element>
+
+      <!-- Músicas -->
+      <xsd:element name="ListarMusicas"><xsd:complexType/></xsd:element>
+      <xsd:element name="ListarMusicasResponse"><xsd:complexType><xsd:sequence><xsd:element name="ListarMusicasResult" type="tns:MusicaArray"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="ObterMusica"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ObterMusicaResponse"><xsd:complexType><xsd:sequence><xsd:element name="ObterMusicaResult" type="tns:Musica"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="CriarMusica"><xsd:complexType><xsd:sequence><xsd:element name="nome" type="xsd:string"/><xsd:element name="artista" type="xsd:string"/><xsd:element name="genero" type="xsd:string"/><xsd:element name="duracao_s" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CriarMusicaResponse"><xsd:complexType><xsd:sequence><xsd:element name="CriarMusicaResult" type="tns:Musica"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="AtualizarMusica"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/><xsd:element name="nome" type="xsd:string"/><xsd:element name="artista" type="xsd:string"/><xsd:element name="genero" type="xsd:string"/><xsd:element name="duracao_s" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="AtualizarMusicaResponse"><xsd:complexType><xsd:sequence><xsd:element name="AtualizarMusicaResult" type="tns:Musica"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="RemoverMusica"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="RemoverMusicaResponse"><xsd:complexType/></xsd:element>
+
+      <!-- Playlists -->
+      <xsd:element name="ListarPlaylists"><xsd:complexType/></xsd:element>
+      <xsd:element name="ListarPlaylistsResponse"><xsd:complexType><xsd:sequence><xsd:element name="ListarPlaylistsResult" type="tns:PlaylistArray"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="ObterPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ObterPlaylistResponse"><xsd:complexType><xsd:sequence><xsd:element name="ObterPlaylistResult" type="tns:Playlist"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="CriarPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="nome" type="xsd:string"/><xsd:element name="descricao" type="xsd:string"/><xsd:element name="usuario_id" type="xsd:int"/><xsd:element name="musicas_ids" type="tns:IntegerArray" minOccurs="0"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CriarPlaylistResponse"><xsd:complexType><xsd:sequence><xsd:element name="CriarPlaylistResult" type="tns:Playlist"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="AtualizarPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/><xsd:element name="nome" type="xsd:string"/><xsd:element name="descricao" type="xsd:string"/><xsd:element name="musicas_ids" type="tns:IntegerArray" minOccurs="0"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="AtualizarPlaylistResponse"><xsd:complexType><xsd:sequence><xsd:element name="AtualizarPlaylistResult" type="tns:Playlist"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="RemoverPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="RemoverPlaylistResponse"><xsd:complexType/></xsd:element>
+
+      <!-- Consultas do enunciado -->
+      <xsd:element name="PlaylistsDoUsuario"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="PlaylistsDoUsuarioResponse"><xsd:complexType><xsd:sequence><xsd:element name="PlaylistsDoUsuarioResult" type="tns:PlaylistArray"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="MusicasDaPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="MusicasDaPlaylistResponse"><xsd:complexType><xsd:sequence><xsd:element name="MusicasDaPlaylistResult" type="tns:MusicaArray"/></xsd:sequence></xsd:complexType></xsd:element>
+
+      <xsd:element name="PlaylistsComMusica"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="PlaylistsComMusicaResponse"><xsd:complexType><xsd:sequence><xsd:element name="PlaylistsComMusicaResult" type="tns:PlaylistArray"/></xsd:sequence></xsd:complexType></xsd:element>
+    </xsd:schema>
+  </types>
+
+  <message name="ListarUsuariosReq"><part name="parameters" element="tns:ListarUsuarios"/></message>
+  <message name="ListarUsuariosResp"><part name="parameters" element="tns:ListarUsuariosResponse"/></message>
+  <message name="ObterUsuarioReq"><part name="parameters" element="tns:ObterUsuario"/></message>
+  <message name="ObterUsuarioResp"><part name="parameters" element="tns:ObterUsuarioResponse"/></message>
+  <message name="CriarUsuarioReq"><part name="parameters" element="tns:CriarUsuario"/></message>
+  <message name="CriarUsuarioResp"><part name="parameters" element="tns:CriarUsuarioResponse"/></message>
+  <message name="AtualizarUsuarioReq"><part name="parameters" element="tns:AtualizarUsuario"/></message>
+  <message name="AtualizarUsuarioResp"><part name="parameters" element="tns:AtualizarUsuarioResponse"/></message>
+  <message name="RemoverUsuarioReq"><part name="parameters" element="tns:RemoverUsuario"/></message>
+  <message name="RemoverUsuarioResp"><part name="parameters" element="tns:RemoverUsuarioResponse"/></message>
+
+  <message name="ListarMusicasReq"><part name="parameters" element="tns:ListarMusicas"/></message>
+  <message name="ListarMusicasResp"><part name="parameters" element="tns:ListarMusicasResponse"/></message>
+  <message name="ObterMusicaReq"><part name="parameters" element="tns:ObterMusica"/></message>
+  <message name="ObterMusicaResp"><part name="parameters" element="tns:ObterMusicaResponse"/></message>
+  <message name="CriarMusicaReq"><part name="parameters" element="tns:CriarMusica"/></message>
+  <message name="CriarMusicaResp"><part name="parameters" element="tns:CriarMusicaResponse"/></message>
+  <message name="AtualizarMusicaReq"><part name="parameters" element="tns:AtualizarMusica"/></message>
+  <message name="AtualizarMusicaResp"><part name="parameters" element="tns:AtualizarMusicaResponse"/></message>
+  <message name="RemoverMusicaReq"><part name="parameters" element="tns:RemoverMusica"/></message>
+  <message name="RemoverMusicaResp"><part name="parameters" element="tns:RemoverMusicaResponse"/></message>
+
+  <message name="ListarPlaylistsReq"><part name="parameters" element="tns:ListarPlaylists"/></message>
+  <message name="ListarPlaylistsResp"><part name="parameters" element="tns:ListarPlaylistsResponse"/></message>
+  <message name="ObterPlaylistReq"><part name="parameters" element="tns:ObterPlaylist"/></message>
+  <message name="ObterPlaylistResp"><part name="parameters" element="tns:ObterPlaylistResponse"/></message>
+  <message name="CriarPlaylistReq"><part name="parameters" element="tns:CriarPlaylist"/></message>
+  <message name="CriarPlaylistResp"><part name="parameters" element="tns:CriarPlaylistResponse"/></message>
+  <message name="AtualizarPlaylistReq"><part name="parameters" element="tns:AtualizarPlaylist"/></message>
+  <message name="AtualizarPlaylistResp"><part name="parameters" element="tns:AtualizarPlaylistResponse"/></message>
+  <message name="RemoverPlaylistReq"><part name="parameters" element="tns:RemoverPlaylist"/></message>
+  <message name="RemoverPlaylistResp"><part name="parameters" element="tns:RemoverPlaylistResponse"/></message>
+
+  <message name="PlaylistsDoUsuarioReq"><part name="parameters" element="tns:PlaylistsDoUsuario"/></message>
+  <message name="PlaylistsDoUsuarioResp"><part name="parameters" element="tns:PlaylistsDoUsuarioResponse"/></message>
+  <message name="MusicasDaPlaylistReq"><part name="parameters" element="tns:MusicasDaPlaylist"/></message>
+  <message name="MusicasDaPlaylistResp"><part name="parameters" element="tns:MusicasDaPlaylistResponse"/></message>
+  <message name="PlaylistsComMusicaReq"><part name="parameters" element="tns:PlaylistsComMusica"/></message>
+  <message name="PlaylistsComMusicaResp"><part name="parameters" element="tns:PlaylistsComMusicaResponse"/></message>
+
+  <portType name="StreamingPortType">
+    <operation name="ListarUsuarios"><input message="tns:ListarUsuariosReq"/><output message="tns:ListarUsuariosResp"/></operation>
+    <operation name="ObterUsuario"><input message="tns:ObterUsuarioReq"/><output message="tns:ObterUsuarioResp"/></operation>
+    <operation name="CriarUsuario"><input message="tns:CriarUsuarioReq"/><output message="tns:CriarUsuarioResp"/></operation>
+    <operation name="AtualizarUsuario"><input message="tns:AtualizarUsuarioReq"/><output message="tns:AtualizarUsuarioResp"/></operation>
+    <operation name="RemoverUsuario"><input message="tns:RemoverUsuarioReq"/><output message="tns:RemoverUsuarioResp"/></operation>
+
+    <operation name="ListarMusicas"><input message="tns:ListarMusicasReq"/><output message="tns:ListarMusicasResp"/></operation>
+    <operation name="ObterMusica"><input message="tns:ObterMusicaReq"/><output message="tns:ObterMusicaResp"/></operation>
+    <operation name="CriarMusica"><input message="tns:CriarMusicaReq"/><output message="tns:CriarMusicaResp"/></operation>
+    <operation name="AtualizarMusica"><input message="tns:AtualizarMusicaReq"/><output message="tns:AtualizarMusicaResp"/></operation>
+    <operation name="RemoverMusica"><input message="tns:RemoverMusicaReq"/><output message="tns:RemoverMusicaResp"/></operation>
+
+    <operation name="ListarPlaylists"><input message="tns:ListarPlaylistsReq"/><output message="tns:ListarPlaylistsResp"/></operation>
+    <operation name="ObterPlaylist"><input message="tns:ObterPlaylistReq"/><output message="tns:ObterPlaylistResp"/></operation>
+    <operation name="CriarPlaylist"><input message="tns:CriarPlaylistReq"/><output message="tns:CriarPlaylistResp"/></operation>
+    <operation name="AtualizarPlaylist"><input message="tns:AtualizarPlaylistReq"/><output message="tns:AtualizarPlaylistResp"/></operation>
+    <operation name="RemoverPlaylist"><input message="tns:RemoverPlaylistReq"/><output message="tns:RemoverPlaylistResp"/></operation>
+
+    <operation name="PlaylistsDoUsuario"><input message="tns:PlaylistsDoUsuarioReq"/><output message="tns:PlaylistsDoUsuarioResp"/></operation>
+    <operation name="MusicasDaPlaylist"><input message="tns:MusicasDaPlaylistReq"/><output message="tns:MusicasDaPlaylistResp"/></operation>
+    <operation name="PlaylistsComMusica"><input message="tns:PlaylistsComMusicaReq"/><output message="tns:PlaylistsComMusicaResp"/></operation>
+  </portType>
+
+  <binding name="StreamingBinding" type="tns:StreamingPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ListarUsuarios"><soap:operation soapAction="ListarUsuarios"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="ObterUsuario"><soap:operation soapAction="ObterUsuario"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="CriarUsuario"><soap:operation soapAction="CriarUsuario"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="AtualizarUsuario"><soap:operation soapAction="AtualizarUsuario"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="RemoverUsuario"><soap:operation soapAction="RemoverUsuario"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+
+    <operation name="ListarMusicas"><soap:operation soapAction="ListarMusicas"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="ObterMusica"><soap:operation soapAction="ObterMusica"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="CriarMusica"><soap:operation soapAction="CriarMusica"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="AtualizarMusica"><soap:operation soapAction="AtualizarMusica"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="RemoverMusica"><soap:operation soapAction="RemoverMusica"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+
+    <operation name="ListarPlaylists"><soap:operation soapAction="ListarPlaylists"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="ObterPlaylist"><soap:operation soapAction="ObterPlaylist"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="CriarPlaylist"><soap:operation soapAction="CriarPlaylist"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="AtualizarPlaylist"><soap:operation soapAction="AtualizarPlaylist"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="RemoverPlaylist"><soap:operation soapAction="RemoverPlaylist"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+
+    <operation name="PlaylistsDoUsuario"><soap:operation soapAction="PlaylistsDoUsuario"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="MusicasDaPlaylist"><soap:operation soapAction="MusicasDaPlaylist"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    <operation name="PlaylistsComMusica"><soap:operation soapAction="PlaylistsComMusica"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+  </binding>
+
+  <service name="StreamingMusicas">
+    <port name="StreamingPort" binding="tns:StreamingBinding">
+      <soap:address location="http://127.0.0.1:8104/"/>
+    </port>
+  </service>
+</definitions>

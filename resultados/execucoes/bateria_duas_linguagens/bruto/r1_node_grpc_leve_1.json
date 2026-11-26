@@ -1,0 +1,16 @@
+{
+  "linguagem": "node",
+  "tecnologia": "grpc",
+  "carga": "leve",
+  "vus": 1,
+  "requisicoes": 15929,
+  "requisicoes_por_s": 5309.316733140329,
+  "latencia_media_ms": 0.10658726354447862,
+  "latencia_mediana_ms": 0.093938,
+  "latencia_p95_ms": 0.16332459999999996,
+  "latencia_p99_ms": 0.2854275999999998,
+  "latencia_max_ms": 4.142513,
+  "taxa_erros": 0,
+  "bytes_recebidos_por_req": 371.96434176658926,
+  "bytes_enviados_por_req": 75.39839286835331
+}

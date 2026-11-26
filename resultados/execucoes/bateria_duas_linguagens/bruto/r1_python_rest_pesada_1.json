@@ -1,0 +1,16 @@
+{
+  "linguagem": "python",
+  "tecnologia": "rest",
+  "carga": "pesada",
+  "vus": 1,
+  "requisicoes": 6834,
+  "requisicoes_por_s": 2277.817204410074,
+  "latencia_media_ms": 0.3985238403570373,
+  "latencia_mediana_ms": 0.3871985,
+  "latencia_p95_ms": 0.5130389999999998,
+  "latencia_p99_ms": 0.6313886100000001,
+  "latencia_max_ms": 0.935494,
+  "taxa_erros": 0,
+  "bytes_recebidos_por_req": 87909,
+  "bytes_enviados_por_req": 77
+}

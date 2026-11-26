@@ -1,0 +1,16 @@
+{
+  "linguagem": "node",
+  "tecnologia": "soap",
+  "carga": "leve",
+  "vus": 1,
+  "requisicoes": 18977,
+  "requisicoes_por_s": 6325.382254287446,
+  "latencia_media_ms": 0.11322457564420049,
+  "latencia_mediana_ms": 0.109272,
+  "latencia_p95_ms": 0.14109000000000002,
+  "latencia_p99_ms": 0.25366764000000036,
+  "latencia_max_ms": 0.774949,
+  "taxa_erros": 0,
+  "bytes_recebidos_por_req": 1760.7203983769828,
+  "bytes_enviados_por_req": 428.4793697633978
+}

@@ -1,0 +1,80 @@
+// Contrato do serviço gRPC (compartilhado entre Python e Node.js!).
+//
+// Em gRPC, a API é definida ANTES do código, neste arquivo .proto
+// (Protocol Buffers). A partir dele, geramos código em Python (protoc)
+// e carregamos o mesmo contrato dinamicamente em Node.js.
+// As mensagens trafegam em formato binário (compacto) sobre HTTP/2.
+
+syntax = "proto3";
+
+package streaming;
+
+// ---- mensagens (os "tipos de dados") ------------------------------------
+
+message Vazio {}
+
+message Id {
+  int32 id = 1;
+}
+
+message Usuario {
+  int32 id = 1;
+  string nome = 2;
+  int32 idade = 3;
+  string email = 4;
+}
+
+message Musica {
+  int32 id = 1;
+  string nome = 2;
+  string artista = 3;
+  string genero = 4;
+  int32 duracao_s = 5;
+}
+
+message Playlist {
+  int32 id = 1;
+  string nome = 2;
+  string descricao = 3;
+  int32 usuario_id = 4;
+  repeated int32 musicas_ids = 5;   // "repeated" = lista
+}
+
+message NovoUsuario    { string nome = 1; int32 idade = 2; string email = 3; }
+message NovaMusica     { string nome = 1; string artista = 2; string genero = 3; int32 duracao_s = 4; }
+message NovaPlaylist   { string nome = 1; string descricao = 2; int32 usuario_id = 3; repeated int32 musicas_ids = 4; }
+message AlteraPlaylist { int32 id = 1; string nome = 2; string descricao = 3; repeated int32 musicas_ids = 4; }
+
+message ListaUsuarios  { repeated Usuario usuarios = 1; }
+message ListaMusicas   { repeated Musica musicas = 1; }
+message ListaPlaylists { repeated Playlist playlists = 1; }
+
+// ---- serviço (as "funções" que o cliente pode chamar remotamente) ------
+
+service Streaming {
+  // Usuários
+  rpc ListarUsuarios    (Vazio)       returns (ListaUsuarios);
+  rpc ObterUsuario      (Id)          returns (Usuario);
+  rpc CriarUsuario      (NovoUsuario) returns (Usuario);
+  rpc AtualizarUsuario  (Usuario)     returns (Usuario);
+  rpc RemoverUsuario    (Id)          returns (Vazio);
+
+  // Músicas
+  rpc ListarMusicas     (Vazio)       returns (ListaMusicas);
+  rpc ObterMusica       (Id)          returns (Musica);
+  rpc CriarMusica       (NovaMusica)  returns (Musica);
+  rpc AtualizarMusica   (Musica)      returns (Musica);
+  rpc RemoverMusica     (Id)          returns (Vazio);
+
+  // Playlists
+  rpc ListarPlaylists   (Vazio)          returns (ListaPlaylists);
+  rpc ObterPlaylist     (Id)             returns (Playlist);
+  rpc CriarPlaylist     (NovaPlaylist)   returns (Playlist);
+  rpc AtualizarPlaylist (AlteraPlaylist) returns (Playlist);
+  rpc RemoverPlaylist   (Id)             returns (Vazio);
+
+  // Consultas pedidas no enunciado
+  rpc PlaylistsDoUsuario (Id) returns (ListaPlaylists);
+  rpc MusicasDaPlaylist  (Id) returns (ListaMusicas);
+  rpc PlaylistsComMusica (Id) returns (ListaPlaylists);
+}

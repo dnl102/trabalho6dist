@@ -1,0 +1,45 @@
+{
+  "inicio": "2026-11-24T18:39:35",
+  "cpu": "13th Gen Intel(R) Core(TM) i5-1334U",
+  "nucleos": 12,
+  "memoria": "Mem:            15Gi       7.3Gi       3.7Gi       777Mi       5.9Gi       8.0Gi",
+  "sistema": "Linux-7.2.15-1-omarchy-x86_64-with-glibc2.44",
+  "python": "3.11.16",
+  "node": "v26.13.1",
+  "k6": "k6 v2.3.0 (commit/e088784614, go1.26.8, linux/amd64)",
+  "carga_media_antes (1/5/15 min)": [
+    0.40966796875,
+    0.63427734375,
+    0.744140625
+  ],
+  "cpus_servidor": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "cpus_k6": "4-11",
+  "repeticoes": 2,
+  "duracao_por_teste": "3s",
+  "linguagens": [
+    "python",
+    "node"
+  ],
+  "tecnologias": [
+    "rest",
+    "graphql",
+    "grpc",
+    "soap"
+  ],
+  "niveis_vus": [
+    1,
+    10,
+    50,
+    100
+  ],
+  "cargas": [
+    "leve",
+    "pesada",
+    "escrita"
+  ]
+}

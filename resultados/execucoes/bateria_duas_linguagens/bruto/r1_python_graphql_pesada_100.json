@@ -1,0 +1,16 @@
+{
+  "linguagem": "python",
+  "tecnologia": "graphql",
+  "carga": "pesada",
+  "vus": 100,
+  "requisicoes": 290,
+  "requisicoes_por_s": 63.379563344815494,
+  "latencia_media_ms": 1304.5237464275867,
+  "latencia_mediana_ms": 273.1362895,
+  "latencia_p95_ms": 4344.6150847,
+  "latencia_p99_ms": 4524.18201156,
+  "latencia_max_ms": 4569.560209,
+  "taxa_erros": 0,
+  "bytes_recebidos_por_req": 91602,
+  "bytes_enviados_por_req": 189
+}

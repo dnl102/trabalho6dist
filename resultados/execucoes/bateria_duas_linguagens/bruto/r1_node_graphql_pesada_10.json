@@ -1,0 +1,16 @@
+{
+  "linguagem": "node",
+  "tecnologia": "graphql",
+  "carga": "pesada",
+  "vus": 10,
+  "requisicoes": 1330,
+  "requisicoes_por_s": 439.9422872196353,
+  "latencia_media_ms": 22.08177545263158,
+  "latencia_mediana_ms": 20.347092,
+  "latencia_p95_ms": 41.3541113,
+  "latencia_p99_ms": 41.76867379,
+  "latencia_max_ms": 92.066491,
+  "taxa_erros": 0,
+  "bytes_recebidos_por_req": 86994,
+  "bytes_enviados_por_req": 189
+}
